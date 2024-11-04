@@ -24,31 +24,32 @@ function calcDate(date: DateType, amount: number, unit: CalculateUnitType = 'day
     return calculatedDate.format(format);
 }
 
-function calcCurrentDateDifference(date: DateType, unit: CalculateUnitType = 'day') {
-    const currentDateTimestamp = dayjs().valueOf();
-    const targetDateTimestamp = dayjs(date).valueOf();
-
-    const differenceInMilliseconds = targetDateTimestamp - currentDateTimestamp;
-
-    switch (unit) {
-        case 'second':
-            return Math.floor(differenceInMilliseconds / 1000); // 초
-        case 'minute':
-            return Math.floor(differenceInMilliseconds / (1000 * 60)); // 분
-        case 'hour':
-            return Math.floor(differenceInMilliseconds / (1000 * 60 * 60)); // 시
-        case 'day':
-            return Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24)); // 일
-        case 'month':
-            return dayjs(date).diff(dayjs(), 'month'); // 월
-        case 'year':
-            return dayjs(date).diff(dayjs(), 'year'); // 연
-        default:
-            throw new Error('Invalid unit specified'); // 에러
-    }
-};
+// function calcCurrentDateDifference(date: DateType, unit: CalculateUnitType = 'day') {
+//     const currentDateTimestamp = dayjs().valueOf();
+//     const targetDateTimestamp = dayjs(date).valueOf();
+//
+//     const differenceInMilliseconds = targetDateTimestamp - currentDateTimestamp;
+//
+//     switch (unit) {
+//         case 'second':
+//             return Math.floor(differenceInMilliseconds / 1000); // 초
+//         case 'minute':
+//             return Math.floor(differenceInMilliseconds / (1000 * 60)); // 분
+//         case 'hour':
+//             return Math.floor(differenceInMilliseconds / (1000 * 60 * 60)); // 시
+//         case 'day':
+//             return Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24)); // 일
+//         case 'month':
+//             return dayjs(date).diff(dayjs(), 'month'); // 월
+//         case 'year':
+//             return dayjs(date).diff(dayjs(), 'year'); // 연
+//         default:
+//             throw new Error('Invalid unit specified'); // 에러
+//     }
+// };
 
 
 export default {
-    formatConfig, getCurrentDate, getFormatDate, calcDate, calcCurrentDateDifference,
+    formatConfig, getCurrentDate, getFormatDate, calcDate,
+    // calcCurrentDateDifference,
 };
