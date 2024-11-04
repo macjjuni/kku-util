@@ -1,0 +1,25 @@
+{
+    "files": [],
+    "include": ["src"],
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "noEmit": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "baseUrl": ".",
+        "outDir": "./lib",
+        "paths": {"@/*": ["./src/*"]},
+        "types": ["jest", "@testing-library/jest-dom"]
+    },
+    "references": [{"path": "./tsconfig.node.json"}]
+}
