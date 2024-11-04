@@ -11,45 +11,50 @@ const formatConfig = {
     detail: 'YYYY-MM-DD HH:mm:ss',
 };
 
+function getDayJsDate(date: DateType) {
+    const dateObj = dayjs(date);
+    if (!dateObj.isValid()){
+        throw Error("Invalid date.");
+    }
+    return dateObj;
+}
+
 function getCurrentDate(format?: string) {
     return dayjs().format(format || formatConfig.detail);
 }
 
 function getFormatDate(date: DateType, format?: string) {
-    return dayjs(date).format(format || formatConfig.default);
+    return getDayJsDate(date).format(format || formatConfig.default);
 }
 
 function calcDate(date: DateType, amount: number, unit: CalculateUnitType = 'day', format?: string) {
-    const calculatedDate = dayjs(date).add(amount, unit);
+    const calculatedDate = getDayJsDate(date).add(amount, unit);
     return calculatedDate.format(format);
 }
 
-// function calcCurrentDateDifference(date: DateType, unit: CalculateUnitType = 'day') {
-//     const currentDateTimestamp = dayjs().valueOf();
-//     const targetDateTimestamp = dayjs(date).valueOf();
-//
-//     const differenceInMilliseconds = targetDateTimestamp - currentDateTimestamp;
-//
-//     switch (unit) {
-//         case 'second':
-//             return Math.floor(differenceInMilliseconds / 1000); // 초
-//         case 'minute':
-//             return Math.floor(differenceInMilliseconds / (1000 * 60)); // 분
-//         case 'hour':
-//             return Math.floor(differenceInMilliseconds / (1000 * 60 * 60)); // 시
-//         case 'day':
-//             return Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24)); // 일
-//         case 'month':
-//             return dayjs(date).diff(dayjs(), 'month'); // 월
-//         case 'year':
-//             return dayjs(date).diff(dayjs(), 'year'); // 연
-//         default:
-//             throw new Error('Invalid unit specified'); // 에러
-//     }
-// };
+function calcCurrentDateDifference(date: DateType, unit: CalculateUnitType) {
+    const currentDate = getCurrentDate(); // 현재 날짜
+    const targetDate = getDayJsDate(date); // 목표 날짜
+
+    switch (unit) {
+        case 'second':
+            return targetDate.diff(currentDate, 'second'); // 초 차이
+        case 'minute':
+            return targetDate.diff(currentDate, 'minute'); // 분 차이
+        case 'hour':
+            return targetDate.diff(currentDate, 'hour'); // 시간 차이
+        case 'day':
+            return targetDate.diff(currentDate, 'day'); // 일 차이
+        case 'month':
+            return targetDate.diff(currentDate, 'month'); // 월 차이
+        case 'year':
+            return targetDate.diff(currentDate, 'year'); // 연 차이
+        default:
+            throw new Error('Invalid unit specified'); // 에러 처리
+    }
+}
 
 
 export default {
-    formatConfig, getCurrentDate, getFormatDate, calcDate,
-    // calcCurrentDateDifference,
+    formatConfig, getCurrentDate, getFormatDate, calcDate, calcCurrentDateDifference
 };

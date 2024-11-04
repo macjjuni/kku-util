@@ -1,7 +1,7 @@
 import {date} from '@/index';
 import dayjs from 'dayjs';
 
-const {formatConfig: format, getCurrentDate, getFormatDate, calcDate} = date;
+const {formatConfig: format, getCurrentDate, getFormatDate, calcDate, calcCurrentDateDifference} = date;
 
 describe('date util test', () => {
 
@@ -126,86 +126,104 @@ describe('date util test', () => {
         });
     });
 
-    // describe('calcCurrentDateDifference', () => {
-    //     it('should calculate the difference in seconds correctly', () => {
-    //         const targetDate = dayjs().add(30, 'second').format(); // 현재 시간에서 30초 후
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'second');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'second');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should calculate the difference in minutes correctly', () => {
-    //         const targetDate = dayjs().add(5, 'minute').format(); // 현재 시간에서 5분 후
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'minute');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'minute');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should calculate the difference in hours correctly', () => {
-    //         const targetDate = dayjs().add(3, 'hour').format(); // 현재 시간에서 3시간 후
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'hour');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'hour');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should calculate the difference in days correctly', () => {
-    //         const targetDate = dayjs().add(10, 'day').format(); // 현재 시간에서 10일 후
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'day');
-    //         const actualDifference = calcCurrentDateDifference(targetDate);
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should calculate the difference in months correctly', () => {
-    //         const targetDate = dayjs().add(3, 'month').format();
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'month');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'month');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should calculate the difference in years correctly', () => {
-    //         const targetDate = dayjs().add(12, 'year').format(); // 현재 시간에서 1년 후
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'year');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'year');
-    //         console.log("expectedDifference", expectedDifference);
-    //         console.log("actualDifference", actualDifference);
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should return a negative difference for past dates in seconds', () => {
-    //         const targetDate = dayjs().subtract(10, 'second').toISOString(); // 현재 시간에서 10초 전
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'second');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'second');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should return a negative difference for past dates in minutes', () => {
-    //         const targetDate = dayjs().subtract(2, 'minute').toISOString(); // 현재 시간에서 2분 전
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'minute');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'minute');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should return a negative difference for past dates in hours', () => {
-    //         const targetDate = dayjs().subtract(1, 'hour').toISOString(); // 현재 시간에서 1시간 전
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'hour');
-    //         const actualDifference = calcCurrentDateDifference(targetDate, 'hour');
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    //
-    //     it('should return a negative difference for past dates in days', () => {
-    //         const targetDate = dayjs().subtract(5, 'day').toISOString(); // 현재 시간에서 5일 전
-    //         const expectedDifference = dayjs(targetDate).diff(dayjs(), 'day');
-    //         const actualDifference = calcCurrentDateDifference(targetDate);
-    //
-    //         expect(actualDifference).toBe(expectedDifference);
-    //     });
-    // });
+    describe('calcCurrentDateDifference', () => {
+        it('should calculate the difference in seconds correctly', () => {
+            const currentDate = getCurrentDate();
+            const addDate = dayjs(currentDate).add(30, 'second').format(); // 현재 시간에서 30초 후
+            const targetUnit = 'second';
+            const expectedDifference = dayjs(addDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(addDate, targetUnit);
+
+            expect(actualDifference).toBeCloseTo(expectedDifference, 0);
+        });
+
+        it('should calculate the difference in minutes correctly', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).add(5, 'minute').format(); // 현재 시간에서 5분 후
+            const targetUnit = 'minute';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should calculate the difference in hours correctly', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).add(3, 'hour').format(); // 현재 시간에서 3시간 후
+            const targetUnit = 'hour';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should calculate the difference in days correctly', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).add(10, 'day').format(); // 현재 시간에서 10일 후
+            const targetUnit = 'day';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should calculate the difference in months correctly', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).add(3, 'month').format();
+            const targetUnit = 'month';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should calculate the difference in years correctly', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).add(12, 'year').format(); // 현재 시간에서 1년 후
+            const targetUnit = 'year';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should return a negative difference for past dates in seconds', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).subtract(10, 'second').toISOString(); // 현재 시간에서 10초 전
+            const targetUnit = 'second';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should return a negative difference for past dates in minutes', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).subtract(2, 'minute').toISOString(); // 현재 시간에서 2분 전
+            const targetUnit = 'minute';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should return a negative difference for past dates in hours', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).subtract(1, 'hour').toISOString(); // 현재 시간에서 1시간 전
+            const targetUnit = 'hour';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+
+        it('should return a negative difference for past dates in days', () => {
+            const currentDate = getCurrentDate();
+            const targetDate = dayjs(currentDate).subtract(5, 'day').toISOString(); // 현재 시간에서 5일 전
+            const targetUnit = 'day';
+            const expectedDifference = dayjs(targetDate).diff(currentDate, targetUnit);
+            const actualDifference = calcCurrentDateDifference(targetDate, targetUnit);
+
+            expect(actualDifference).toBe(expectedDifference);
+        });
+    });
 });
