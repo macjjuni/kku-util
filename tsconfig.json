@@ -1,6 +1,7 @@
 {
     "files": [],
     "include": ["src"], // src 모든 파일을 컴파일
+    "exclude": ["node_modules"],
     "compilerOptions": {
         "target": "ES2020",
         "useDefineForClassFields": true,
@@ -12,13 +13,16 @@
         "isolatedModules": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "noEmit": true,
+        "noEmit": false,
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
         "baseUrl": ".",
+        "declaration": true,
+        "emitDeclarationOnly": false,
         "outDir": "./lib",
+        "rootDir": "./src",
         "paths": {"@/*": ["./src/*"]},
         "types": ["jest", "@testing-library/jest-dom"]
     },
