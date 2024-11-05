@@ -20,6 +20,7 @@ export default defineConfig({
             entry: path.resolve(__dirname, 'src/index.ts'), // Init
             name: 'kku-util',
             fileName: function (format) { return "index.".concat(format, ".js"); },
+            formats: ['es', 'cjs'],
         },
     },
 });

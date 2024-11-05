@@ -20,8 +20,9 @@ export default defineConfig({
     build: {
         outDir: './lib',
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'), // Init
             name: 'kku-util',
+            entry: path.resolve(__dirname, 'src/index.ts'), // Init
+            formats: ['es', 'cjs'],
             fileName: (format) => `index.${format}.js`,
         },
     },

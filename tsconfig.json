@@ -1,6 +1,6 @@
 {
     "files": [],
-    "include": ["src"],
+    "include": ["src"], // src 모든 파일을 컴파일
     "compilerOptions": {
         "target": "ES2020",
         "useDefineForClassFields": true,
