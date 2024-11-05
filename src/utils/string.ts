@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 
-
 function isNumber(value: number | string) {
     const isNumber = typeof value === 'number';
     if (isNumber) {
@@ -20,7 +19,6 @@ function comma(value: number, locales?: Intl.LocalesArgument, options?: Intl.Num
 function getUuid() {
     return uuidv4();
 }
-
 
 
 export default {

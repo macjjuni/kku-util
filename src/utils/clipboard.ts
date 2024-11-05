@@ -8,5 +8,4 @@ async function copyToClipboard(txt: string | number) {
     }
 }
 
-
 export default {copyToClipboard};
