@@ -17,10 +17,10 @@ export default defineConfig({
     build: {
         outDir: './lib',
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'), // Init
             name: 'kku-util',
-            fileName: function (format) { return "index.".concat(format, ".js"); },
+            entry: path.resolve(__dirname, 'src/index.ts'), // Init
             formats: ['es', 'cjs'],
+            fileName: function (format) { return "index.".concat(format, ".js"); },
         },
     },
 });
