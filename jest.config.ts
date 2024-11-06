@@ -16,4 +16,9 @@ export default {
     },
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    // 테스트 제외 경로 추가
+    testPathIgnorePatterns: [
+        '/node_modules/',
+        '/lib/',
+    ],
 }

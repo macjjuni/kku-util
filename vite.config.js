@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import compression from 'vite-plugin-compression2';
+import dts from 'vite-plugin-dts';
 var __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
     plugins: [
@@ -9,6 +10,7 @@ export default defineConfig({
             include: /\.(js|scss)$/,
             threshold: 1400,
         }),
+        dts()
     ],
     resolve: {
         extensions: ['.js', '.ts'],
