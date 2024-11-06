@@ -19,7 +19,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "jest && tsc -b && vite build",
+    "build": "jest && vite build && tsc -b",
     "test": "jest",
     "publish": "npm publish"
   },
