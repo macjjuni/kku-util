@@ -10,7 +10,7 @@
     ".": {
       "import": "./lib/index.es.js",
       "require": "./lib/index.cjs.js",
-      "types": "./lib/index.d.js"
+      "types": "./lib/index.d.ts"
     }
   },
   "files": [
