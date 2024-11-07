@@ -11,13 +11,17 @@ const formatConfig = {
 };
 
 function getDayJsDate(date: DateType) {
+    // 숫자인 경우, 10자리 타임스탬프(초 단위)를 밀리초로 변환
+    if (typeof date === 'number' && date.toString().length === 10) {
+        date = date * 1000; // 밀리초로 변환
+    }
+
     const dateObj = dayjs(date);
-    if (!dateObj.isValid()){
-        throw Error("Invalid date.");
+    if (!dateObj.isValid()) {
+        throw new Error("Invalid date.");
     }
     return dateObj;
 }
-
 function getCurrentDate(format?: string) {
     return dayjs().format(format || formatConfig.detail);
 }
