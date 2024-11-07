@@ -1,5 +1,5 @@
 // copyToClipboard.test.ts
-import {clipboardUtil} from '@/index';
+import {clipboardUtil} from '../src';
 
 const {copyToClipboard} = clipboardUtil;
 const testStrText = "test text 123";

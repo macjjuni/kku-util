@@ -1,4 +1,4 @@
-import {stringUtil} from '@/index';
+import {stringUtil} from '../src';
 
 const {isNumber, extractStringNumber, comma, getUuid} = stringUtil;
 

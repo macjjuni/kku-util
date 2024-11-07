@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/__tests__/clipboard.test.ts","./src/__tests__/date.test.ts","./src/__tests__/debouncethrottle.test.ts","./src/__tests__/string.test.ts","./src/__tests__/system.test.ts","./src/utils/clipboard.ts","./src/utils/date.ts","./src/utils/debouncethrottle.ts","./src/utils/string.ts","./src/utils/system.ts"],"version":"5.6.3"}
+{"root":["./src/index.ts"],"version":"5.6.3"}

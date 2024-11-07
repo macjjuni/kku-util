@@ -1,4 +1,4 @@
-import {debounceThrottleUtil} from '@/index';
+import {debounceThrottleUtil} from '../src';
 
 const {createThrottle, createDebounce} = debounceThrottleUtil;
 

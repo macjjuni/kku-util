@@ -17,7 +17,8 @@ export default defineConfig({
         alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     },
     build: {
-        outDir: './lib',
+        outDir: 'lib',
+        emptyOutDir: false,
         lib: {
             name: 'kku-util',
             entry: path.resolve(__dirname, 'src/index.ts'), // Init

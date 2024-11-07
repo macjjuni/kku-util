@@ -1,7 +1,7 @@
 {
     "files": [],
     "include": ["src"], // src 모든 파일을 컴파일
-    "exclude": ["node_modules", "src/__tests__"],
+    "exclude": ["node_modules"],
     "compilerOptions": {
         "target": "ES2020",
         "useDefineForClassFields": true,

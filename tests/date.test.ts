@@ -1,4 +1,4 @@
-import {dateUtil} from '@/index';
+import {dateUtil} from '../src';
 import dayjs, {ManipulateType} from 'dayjs';
 
 const {formatConfig: format, getCurrentDate, getDayJsDate, getFormatDate, calcDate,

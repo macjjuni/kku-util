@@ -20,7 +20,8 @@ export default defineConfig({
     },
 
     build: {
-        outDir: './lib',
+        outDir: 'lib',
+        emptyOutDir: false,
         lib: {
             name: 'kku-util',
             entry: path.resolve(__dirname, 'src/index.ts'), // Init

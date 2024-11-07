@@ -1,4 +1,4 @@
-import {systemUtil} from '@/index';
+import {systemUtil} from '../src';
 
 const {getBrowser, getOS} = systemUtil;
 
