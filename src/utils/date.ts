@@ -23,6 +23,9 @@ function getCurrentDate(format?: string) {
 }
 
 function getFormatDate(date: DateType, format?: string) {
+    if (typeof date === 'number' && date.toString().length === 10) {
+        date = date * 1000;
+    }
     return getDayJsDate(date).format(format || formatConfig.default);
 }
 

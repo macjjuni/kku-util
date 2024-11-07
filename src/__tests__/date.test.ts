@@ -80,6 +80,16 @@ describe('date util test', () => {
             // Assert
             expect(expectedDate).toBe(targetDate);
         });
+
+        it('should format the current timestamp consistently between dayjs and getFormatDate', () => {
+            // Arrange
+            const currentTimeStamp = 1730944817;
+            const expectedDate = dayjs(currentTimeStamp * 1000).format(format.detail);
+            const targetDate = getFormatDate(currentTimeStamp, format.detail);
+
+            // Assert
+            expect(expectedDate).toBe(targetDate); // 두 날짜가 동일한지 확인
+        });
     });
 
     describe('convertToTimestamp', () => {
