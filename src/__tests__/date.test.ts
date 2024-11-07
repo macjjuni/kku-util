@@ -1,7 +1,8 @@
 import {dateUtil} from '@/index';
 import dayjs, {ManipulateType} from 'dayjs';
 
-const {formatConfig: format, getCurrentDate, getDayJsDate, getFormatDate, calcDate, calcCurrentDateDifference} = dateUtil;
+const {formatConfig: format, getCurrentDate, getDayJsDate, getFormatDate, calcDate,
+    calcCurrentDateDifference, convertToTimestamp} = dateUtil;
 
 interface TargetInfo {
     unit: ManipulateType;
@@ -79,6 +80,21 @@ describe('date util test', () => {
             // Assert
             expect(expectedDate).toBe(targetDate);
         });
+    });
+
+    describe('convertToTimestamp', () => {
+
+        it('should format the current timestamp consistently between dayjs and getFormatDate', () => {
+            // Arrange
+            const expectedTimestamp = new Date().getTime();
+            const currentFormattedDate = getFormatDate(expectedTimestamp, format.detail);
+            const targetTimestamp = convertToTimestamp(currentFormattedDate);
+
+            // Assert * 밀리초를 사용하지 않아 타임스템프 값(1000) 오차범위를 추가
+            expect(targetTimestamp).toBeGreaterThanOrEqual(expectedTimestamp - 1000);
+            expect(targetTimestamp).toBeLessThanOrEqual(expectedTimestamp + 1000);
+        });
+
     });
 
 

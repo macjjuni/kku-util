@@ -26,6 +26,10 @@ function getFormatDate(date: DateType, format?: string) {
     return getDayJsDate(date).format(format || formatConfig.default);
 }
 
+function convertToTimestamp(date: DateType): number {
+    return dayjs(date).valueOf();
+}
+
 function calcDate(date: DateType, amount: number, unit: ManipulateType = 'day', format?: string) {
     const calculatedDate = getDayJsDate(date).add(amount, unit);
     return calculatedDate.format(format);
@@ -55,5 +59,5 @@ function calcCurrentDateDifference(date: DateType, unit: ManipulateType) {
 
 
 export default {
-    formatConfig, getDayJsDate, getCurrentDate, getFormatDate, calcDate, calcCurrentDateDifference
+    formatConfig, getDayJsDate, getCurrentDate, getFormatDate, calcDate, calcCurrentDateDifference, convertToTimestamp
 };
