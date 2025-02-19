@@ -8,4 +8,13 @@ async function copyToClipboard(txt: string | number) {
     }
 }
 
-export default {copyToClipboard};
+export async function pasteFromClipboard() {
+    try {
+        return await navigator.clipboard.readText();
+    } catch (e) {
+        console.error(e);
+        return "";
+    }
+}
+
+export default {copyToClipboard, pasteFromClipboard};
