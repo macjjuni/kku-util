@@ -23,7 +23,8 @@
         "baseUrl": ".",
         "outDir": "./lib",
         "paths": {"@/*": ["./src/*"]},
-        "types": ["jest", "@testing-library/jest-dom"]
+        "types": ["vitest", "@testing-library/jest-dom"],
+        "typeRoots": ["./node_modules/@types", "./types"]
     },
-    "references": [{"path": "./tsconfig.node.json"}]
+    "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "composite": true,                         // 프로젝트 references용 (tsconfig.json에서 참조됨)
+    "module": "ESNext",                        // Vite는 ESM 기반
+    "moduleResolution": "bundler",             // Vite + ESM 기준 모듈 해석 방식
+    "allowSyntheticDefaultImports": true,      // default import 허용
+    "skipLibCheck": true                       // 타입 검사 빠르게 처리
   },
   "include": ["vite.config.ts"]
 }
