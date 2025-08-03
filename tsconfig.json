@@ -1,7 +1,7 @@
 {
     "files": [],
     "include": ["src"], // src 모든 파일을 컴파일
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules", "lib", "vite.config.ts"],
     "compilerOptions": {
         "target": "ES2020",
         "useDefineForClassFields": true,
@@ -23,7 +23,9 @@
         "baseUrl": ".",
         "outDir": "./lib",
         "paths": {"@/*": ["./src/*"]},
-        "types": ["jest", "@testing-library/jest-dom"]
+        "types": ["vitest"],
+        "typeRoots": ["./node_modules", "./types"]
+
     },
-    "references": [{"path": "./tsconfig.node.json"}]
+    "references": [{ "path": "./tsconfig.node.json" }]
 }
