@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config' // ✅ 여기 핵심
+import { defineConfig } from 'vitest/config'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import compression from 'vite-plugin-compression2'
